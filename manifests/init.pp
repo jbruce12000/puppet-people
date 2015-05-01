@@ -17,6 +17,7 @@
 #
 # === Authors
 # Reppard Walker <reppardwalker@gmail.com>
+# Jason Bruce <jbruce12000@gmail.com>
 #
 # === Copyright
 # Copyright 2015 Reppard Walker
