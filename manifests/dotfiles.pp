@@ -2,6 +2,7 @@
 
 class people::dotfiles(
   $user    = false,
+  $gituser = false,
   $version = '1.0.0',
 ){
 
@@ -9,7 +10,11 @@ class people::dotfiles(
     fail( 'You must define a user')
   }
 
-  $repo  = "https://github.com/${user}/dotfiles.git"
+  if $gituser == false {
+    fail( 'You must define a git user')
+  }
+
+  $repo  = "https://github.com/${gituser}/dotfiles.git"
   $home  = "/home/${user}"
   $path  = "${home}/dotfiles"
 

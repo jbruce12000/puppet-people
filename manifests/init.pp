@@ -11,8 +11,9 @@
 # === Examples
 #
 #  class { people:
-#    $user   = some_user,
-#    $passwd = 'S0m3D3f@ultS@lt',
+#    $user    = some_user,
+#    $gituser = some_user, #defaults to $user
+#    $passwd  = 'S0m3D3f@ultS@lt',
 #  }
 #
 # === Authors
@@ -24,6 +25,7 @@
 #
 class people (
   $user   = false,
+  $gituser = $user,
   $passwd = '$1$mBuqh43.$nv3F3TsEa4r8h/uZfpjgf.',
 ){
   $home = "/home/${user}"
@@ -42,7 +44,7 @@ class people (
     group   => $user,
     require => User[$user],
   }
-  class { 'people::dotfiles': user => $user }
+  class { 'people::dotfiles': user => $user, gituser => $gituser }
   class { 'vim':
     user     => $user,
     home_dir => $home,
