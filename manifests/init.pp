@@ -26,12 +26,15 @@
 class people (
   $user   = false,
   $gituser = $user,
-  $passwd = '$1$mBuqh43.$nv3F3TsEa4r8h/uZfpjgf.',
+  $passwd = false,
 ){
   $home = "/home/${user}"
 
   if $user == false {
     fail('You must pass a username to this class')
+  }
+  if $passwd == false {
+    fail('You must supply a passwd to this class')
   }
   user { $user:
     ensure     => present,
